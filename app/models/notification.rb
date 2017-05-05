@@ -38,6 +38,12 @@ class Notification < ApplicationRecord
     end
   end
 
+  attr_accessor :subject
+
+  def download_subject
+    @subject = user.github_client.get(subject_url)
+  end
+
   def mark_read(update_github: false)
     self[:unread] = false
     save(touch: false) if changed?

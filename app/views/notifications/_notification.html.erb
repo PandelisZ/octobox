@@ -12,7 +12,7 @@
   <td class='notification-star'>
     <%= octicon 'star', height: 18, class: "toggle-star #{notification.starred ? 'star-active' : 'star-inactive'}", data: { id: notification.id }%>
   </td>
-  <td class='notification-icon'>
+  <td class='notification-icon notification-<%= notification.download_subject.try(:state) %>'>
     <%= octicon notification_icon(notification.subject_type), :height => 16 %>
   </td>
   <td class='notification-subject'>
